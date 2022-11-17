@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 def main():
     # Load data and labels
     # Process data
-    cancerous = 13
+    cancerous = 21
     noncancerous = 12
     x = []
     y = []
@@ -21,7 +21,7 @@ def main():
         y.append(0)
 
     # split data into training and testing
-    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=1)
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=2)
     from sklearn.preprocessing import StandardScaler
     st_x = StandardScaler()
     x_train = st_x.fit_transform(x_train)

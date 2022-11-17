@@ -3,7 +3,7 @@ from scipy.stats import skew, kurtosis
 import numpy as nm
 
 def convertMappingToSTFT(array):
-    f, t, zxx = stft(array)
+    f, t, zxx = stft(array, window='hann')
 
     # flatten the array
     flat = zxx.flatten()
@@ -20,3 +20,9 @@ def convertMappingToSTFT(array):
     data = [nm.sum(real), nm.sum(imag), nm.mean(real), nm.mean(imag), nm.std(real), nm.std(imag), nm.var(real),
             nm.var(imag), skew(real), skew(imag), kurtosis(real), kurtosis(imag)]
     return data
+
+
+def STFT(array):
+    wl = 71
+    window = nm.hamming(wl)
+    f, t, zxx = stft(array, window=window, nperseg=wl, noverlap=wl - 1)
